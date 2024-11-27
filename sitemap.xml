@@ -2,45 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:44902/posts/it/ftp/</loc>
+    <loc>https://blog.sfcs.eu.org/posts/it/ftp/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/tags/git/</loc>
+    <loc>https://blog.sfcs.eu.org/tags/git/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/posts/it/git/</loc>
+    <loc>https://blog.sfcs.eu.org/posts/it/git/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/posts/it/readme/</loc>
+    <loc>https://blog.sfcs.eu.org/posts/it/readme/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/categories/it%E5%9F%BA%E7%A1%80/</loc>
+    <loc>https://blog.sfcs.eu.org/categories/it%E5%9F%BA%E7%A1%80/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/tags/it%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    <loc>https://blog.sfcs.eu.org/tags/it%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/</loc>
+    <loc>https://blog.sfcs.eu.org/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/posts/it/sftp/</loc>
+    <loc>https://blog.sfcs.eu.org/posts/it/sftp/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/tags/</loc>
+    <loc>https://blog.sfcs.eu.org/tags/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/categories/</loc>
+    <loc>https://blog.sfcs.eu.org/categories/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/posts/</loc>
+    <loc>https://blog.sfcs.eu.org/posts/</loc>
     <lastmod>2021-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:44902/about/</loc>
+    <loc>https://blog.sfcs.eu.org/about/</loc>
   </url><url>
-    <loc>http://localhost:44902/archives/</loc>
+    <loc>https://blog.sfcs.eu.org/archives/</loc>
   </url><url>
-    <loc>http://localhost:44902/search/</loc>
+    <loc>https://blog.sfcs.eu.org/search/</loc>
   </url><url>
-    <loc>http://localhost:44902/series/</loc>
+    <loc>https://blog.sfcs.eu.org/series/</loc>
   </url>
 </urlset>
