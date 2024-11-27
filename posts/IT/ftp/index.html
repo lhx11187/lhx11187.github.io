@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="zh" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=43616&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>FTP笔记 | Lucky&#39;s blog</title>
+<meta name="keywords" content="IT基础知识">
+<meta name="description" content="FTP 介绍 FTP（File Transfer Protocol，文件传输协议） 是 TCP/IP 协议组中的协议之一。FTP 协议包括两个组成部分，其一为 FTP 服务器，其二为 FTP 客户端。其中 FTP 服务器用来存储文件，用户可以使用 FTP 客户端通过 FTP 协议访问位于 FTP 服务器上的资源。在开发网站的时候，通常利用 FTP 协议把网页或程序传到 Web 服务器上。此外，由于 FTP 传输效率非常高，在网络上传输大的文件时，一般也采用该协议。
+默认情况下 FTP 协议使用 TCP 端口中的 20 和 21 这两个端口，其中 20 用于传输数据，21 用于传输控制信息。但是，是否使用 20 作为传输数据的端口与 FTP 使用的传输模式有关，如果采用主动模式，那么数据传输端口就是 20；如果采用被动模式，则具体最终使用哪个端口要服务器端和客户端协商决定。
+如何登录 FTP 在命令行下输入ftp IP地址，按照提示输入用户名和密码，完成登陆 1 2 3 4 5 6 7 8 9 C:\Users\liujialin&gt;ftp 192.168.3.1	#直接 ftp IP地址 连接到 192.168.3.1。 220 (vsFTPd 3.0.3) 200 Always in UTF8 mode.">
+<meta name="author" content="Lucky">
+<link rel="canonical" href="http://localhost:43616/posts/it/ftp/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.13162905251adb4d32d8d37aa30b49fcbfdb3493c30440c4e46cee3669beaa72.css" integrity="sha256-ExYpBSUa200y2NN6owtJ/L/bNJPDBEDE5GzuNmm&#43;qnI=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:43616/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:43616/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:43616/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:43616/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:43616/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="zh" href="http://localhost:43616/posts/it/ftp/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:url" content="http://localhost:43616/posts/it/ftp/">
+  <meta property="og:site_name" content="Lucky&#39;s blog">
+  <meta property="og:title" content="FTP笔记">
+  <meta property="og:description" content="FTP 介绍 FTP（File Transfer Protocol，文件传输协议） 是 TCP/IP 协议组中的协议之一。FTP 协议包括两个组成部分，其一为 FTP 服务器，其二为 FTP 客户端。其中 FTP 服务器用来存储文件，用户可以使用 FTP 客户端通过 FTP 协议访问位于 FTP 服务器上的资源。在开发网站的时候，通常利用 FTP 协议把网页或程序传到 Web 服务器上。此外，由于 FTP 传输效率非常高，在网络上传输大的文件时，一般也采用该协议。
+默认情况下 FTP 协议使用 TCP 端口中的 20 和 21 这两个端口，其中 20 用于传输数据，21 用于传输控制信息。但是，是否使用 20 作为传输数据的端口与 FTP 使用的传输模式有关，如果采用主动模式，那么数据传输端口就是 20；如果采用被动模式，则具体最终使用哪个端口要服务器端和客户端协商决定。
+如何登录 FTP 在命令行下输入ftp IP地址，按照提示输入用户名和密码，完成登陆 1 2 3 4 5 6 7 8 9 C:\Users\liujialin&gt;ftp 192.168.3.1	#直接 ftp IP地址 连接到 192.168.3.1。 220 (vsFTPd 3.0.3) 200 Always in UTF8 mode.">
+  <meta property="og:locale" content="zh">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-06-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-06-24T00:00:00+00:00">
+    <meta property="article:tag" content="IT基础知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FTP笔记">
+<meta name="twitter:description" content="FTP 介绍 FTP（File Transfer Protocol，文件传输协议） 是 TCP/IP 协议组中的协议之一。FTP 协议包括两个组成部分，其一为 FTP 服务器，其二为 FTP 客户端。其中 FTP 服务器用来存储文件，用户可以使用 FTP 客户端通过 FTP 协议访问位于 FTP 服务器上的资源。在开发网站的时候，通常利用 FTP 协议把网页或程序传到 Web 服务器上。此外，由于 FTP 传输效率非常高，在网络上传输大的文件时，一般也采用该协议。
+默认情况下 FTP 协议使用 TCP 端口中的 20 和 21 这两个端口，其中 20 用于传输数据，21 用于传输控制信息。但是，是否使用 20 作为传输数据的端口与 FTP 使用的传输模式有关，如果采用主动模式，那么数据传输端口就是 20；如果采用被动模式，则具体最终使用哪个端口要服务器端和客户端协商决定。
+如何登录 FTP 在命令行下输入ftp IP地址，按照提示输入用户名和密码，完成登陆 1 2 3 4 5 6 7 8 9 C:\Users\liujialin&gt;ftp 192.168.3.1	#直接 ftp IP地址 连接到 192.168.3.1。 220 (vsFTPd 3.0.3) 200 Always in UTF8 mode.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "文章",
+      "item": "http://localhost:43616/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "FTP笔记",
+      "item": "http://localhost:43616/posts/it/ftp/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "FTP笔记",
+  "name": "FTP笔记",
+  "description": "FTP 介绍 FTP（File Transfer Protocol，文件传输协议） 是 TCP/IP 协议组中的协议之一。FTP 协议包括两个组成部分，其一为 FTP 服务器，其二为 FTP 客户端。其中 FTP 服务器用来存储文件，用户可以使用 FTP 客户端通过 FTP 协议访问位于 FTP 服务器上的资源。在开发网站的时候，通常利用 FTP 协议把网页或程序传到 Web 服务器上。此外，由于 FTP 传输效率非常高，在网络上传输大的文件时，一般也采用该协议。\n默认情况下 FTP 协议使用 TCP 端口中的 20 和 21 这两个端口，其中 20 用于传输数据，21 用于传输控制信息。但是，是否使用 20 作为传输数据的端口与 FTP 使用的传输模式有关，如果采用主动模式，那么数据传输端口就是 20；如果采用被动模式，则具体最终使用哪个端口要服务器端和客户端协商决定。\n如何登录 FTP 在命令行下输入ftp IP地址，按照提示输入用户名和密码，完成登陆 1 2 3 4 5 6 7 8 9 C:\\Users\\liujialin\u0026gt;ftp 192.168.3.1\t#直接 ftp IP地址 连接到 192.168.3.1。 220 (vsFTPd 3.0.3) 200 Always in UTF8 mode.",
+  "keywords": [
+    "IT基础知识"
+  ],
+  "articleBody": "FTP 介绍 FTP（File Transfer Protocol，文件传输协议） 是 TCP/IP 协议组中的协议之一。FTP 协议包括两个组成部分，其一为 FTP 服务器，其二为 FTP 客户端。其中 FTP 服务器用来存储文件，用户可以使用 FTP 客户端通过 FTP 协议访问位于 FTP 服务器上的资源。在开发网站的时候，通常利用 FTP 协议把网页或程序传到 Web 服务器上。此外，由于 FTP 传输效率非常高，在网络上传输大的文件时，一般也采用该协议。\n默认情况下 FTP 协议使用 TCP 端口中的 20 和 21 这两个端口，其中 20 用于传输数据，21 用于传输控制信息。但是，是否使用 20 作为传输数据的端口与 FTP 使用的传输模式有关，如果采用主动模式，那么数据传输端口就是 20；如果采用被动模式，则具体最终使用哪个端口要服务器端和客户端协商决定。\n如何登录 FTP 在命令行下输入ftp IP地址，按照提示输入用户名和密码，完成登陆 1 2 3 4 5 6 7 8 9 C:\\Users\\liujialin\u003eftp 192.168.3.1\t#直接 ftp IP地址 连接到 192.168.3.1。 220 (vsFTPd 3.0.3) 200 Always in UTF8 mode. 用户(192.168.3.1:(none)): root\t#输入用户名 331 Please specify the password. 密码:\t#输入密码 230 Login successful.\t#登录成功 ftp\u003e 直接输入 ftp，进入 ftp 服务后输入 open IP地址，按照提示输入用户名和密码，完成登陆 1 2 3 4 5 6 7 8 9 10 C:\\Users\\liujialin\u003eftp\t#输入ftp进入ftp模式 ftp\u003e open 192.168.3.1\t#输入open IP地址 连接到 192.168.3.1。 220 (vsFTPd 3.0.3) 200 Always in UTF8 mode. 用户(192.168.3.1:(none)): root\t#输入用户名 331 Please specify the password. 密码:\t#输入密码 230 Login successful.\t#登录成功 ftp\u003e FTP 基本命令 其实只要说一个命令，常用的基本命令就可以知道了。这个命令就是十万个为什么— ?（没错，该命令就是一个问号，等同 hlep 命令） 直接输入一个 ?，就会显示出这些命令；输入 ? 命令，就会显示该命令的帮助信息\n1 2 3 4 5 6 7 8 9 10 11 12 13 ftp\u003e ? 命令可能是缩写的。 命令为: ! delete literal prompt send ? debug ls put status append dir mdelete pwd trace ascii disconnect mdir quit type bell get mget quote user binary glob mkdir recv verbose bye hash mls remotehelp cd help mput rename close lcd open rmdir ftp\u003e 比如这里随便查看几个命令的帮助信息，如下\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ftp\u003e ? ? ? 打印本地帮助信息 ftp\u003e ? dir dir 列出远程目录的内容 ftp\u003e ? ls ls 列出远程目录的内容 ftp\u003e ? open open 连接到远程 FTP ftp\u003e ? lcd lcd 更改本地工作目录 ftp\u003e help bye bye 终止 ftp 会话并退出 ftp\u003e help pwd pwd 在远程计算机上打印工作目录 ftp\u003e 常用命令 文件或目录操作命令 一般情况下用户都会被限制目录的访问权限，只可在当前目录下进行操作\ndir：显示服务器目录和文件列表\n1 2 3 4 5 6 7 8 9 10 11 12 13 ftp\u003e cd /home 250 Directory successfully changed. ftp\u003e dir 200 PORT command successful. Consider using PASV. 150 Here comes the directory listing. -rw-r--r-- 1 0 0 1019904 May 12 12:39 Installing_OMV5_on_Armbian.pdf -rw-r--r-- 1 0 0 106026 Aug 03 2019 breed.bin drwxr-xr-x 2 55 55 0 Apr 30 03:31 ftp -rw-r--r-- 1 0 0 2159147 Sep 09 2019 昆仑.epub -rw-r--r-- 1 0 0 441798 Feb 12 2019 流浪地球.epub 226 Directory send OK. ftp: 收到 363 字节，用时 0.01秒 24.20千字节/秒。 ftp\u003e mkdir：在服务器上创建目录\n1 2 3 4 5 6 7 8 9 10 11 12 ftp\u003e mkdir test 257 \"/home/test\" created ftp\u003e ls 200 PORT command successful. Consider using PASV. 150 Here comes the directory listing. ftp ss.txt system.png test #新创建的文件夹 226 Directory send OK. ftp: 收到 34 字节，用时 0.01秒 6.80千字节/秒。 ftp\u003e rmdir：在服务器上删除目录\n1 2 3 4 5 6 7 8 9 10 11 ftp\u003e rmdir test 250 Remove directory operation successful. ftp\u003e ls 200 PORT command successful. Consider using PASV. 150 Here comes the directory listing. ftp ss.txt system.png 226 Directory send OK. ftp: 收到 28 字节，用时 0.01秒 5.60千字节/秒。 ftp\u003e ls：显示服务器简易的文件列表\n1 2 3 4 5 6 7 8 9 10 11 ftp\u003e ls 200 PORT command successful. Consider using PASV. 150 Here comes the directory listing. Installing_OMV5_on_Armbian.pdf breed.bin ftp 昆仑.epub 流浪地球.epub 226 Directory send OK. ftp: 收到 83 字节，用时 0.01秒 10.38千字节/秒。 ftp\u003e cd：进入服务器指定的目录\n1 2 3 ftp\u003e cd /tmp 250 Directory successfully changed. ftp\u003e pwd：查看服务器上的当前工作目录\n1 2 3 ftp\u003e pwd 257 \"/tmp\" is the current directory ftp\u003e rename filename [newfilename]：重命名 FTP 服务器上的文件\ndelete filename：删除 FTP 服务器上的文件\n传输方式设置命令 上传和下载文件时应该使用正确的传输类型，FTP 的传输类型分为 ASCII码方式和二进制方式两种，对 .txt、.htm 等文件应采用 ASCII码方式传输，对 .exe或图片、视频、音频等文件应采用二进制方式传输。在默认情况下，FTP 为 ASCII码传输方式。（以下 3 个命令都不带参数）\ntype：查看当前的传输方式\nascii：设定传输方式为 ASCII码方式\nbinary：设定传输方式为二进制方式\n1 2 3 4 5 6 7 8 9 ftp\u003e type 使用 ascii 模式传送文件。 ftp\u003e binary 200 Switching to Binary mode. ftp\u003e type 使用 binary 模式传送文件。 ftp\u003e ascii 200 Switching to ASCII mode. ftp\u003e 上传命令 put filename [newname]\nsend filename [newname]\nfilename 为上传的本地文件名，newname 为上传至 FTP 服务器上时使用的名字，如果不指定 newname，文件将以原名上传。\n上传文件前，应该根据文件的类型设置传输方式（见文章最后），本机的工作目录也应该设置为上传文件所在的目录。\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 ftp\u003e put C:\\Users\\liujialin\\Downloads\\system.png 200 PORT command successful. Consider using PASV. 150 Ok to send data. 226 Transfer complete. ftp: 发送 64878 字节，用时 0.01秒 9268.29千字节/秒。 ftp\u003e send C:\\Users\\liujialin\\Downloads\\ss.txt 200 PORT command successful. Consider using PASV. 150 Ok to send data. 226 Transfer complete. ftp: 发送 382 字节，用时 0.00秒 382000.00千字节/秒。 ftp\u003e ls 200 PORT command successful. Consider using PASV. 150 Here comes the directory listing. ftp ss.txt system.png 226 Directory send OK. ftp: 收到 28 字节，用时 0.01秒 4.67千字节/秒。 ftp\u003e 下载命令 get filename [newname]\nfilename 为 FTP 服务器上的文件名，newname 为保存在本都计算机上时使用的名字，如果不指定 newname，文件将以原名保存。\nget 命令下载的文件将保存在本地计算机的工作目录下。该目录是启动 FTP 时在盘符 C: 后显示的目录。如果想修改本地计算机的工作目录，可以使用 lcd 命令。比如：lcd d:\\ 表示将工作目录设定为 D 盘的根目录。\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 ftp\u003e lcd D:\\ 目前的本地目录 D:\\。 ftp\u003e pwd 257 \"/home\" is the current directory ftp\u003e get ss.txt ssss.txt 200 PORT command successful. Consider using PASV. 150 Opening ASCII mode data connection for ss.txt (382 bytes). 226 Transfer complete. ftp: 收到 417 字节，用时 0.00秒 417000.00千字节/秒。 ftp\u003e get system.png 200 PORT command successful. Consider using PASV. 150 Opening ASCII mode data connection for system.png (64877 bytes). 226 Transfer complete. ftp: 收到 65193 字节，用时 0.00秒 65193.00千字节/秒。 ftp\u003e 其他命令 mput filename1 filename2 ...：上传多个文件\nmget filename1 filename2 ...：下载多个文件\nclose：结束与服务器的 FTP 会话\nquit：结束与服务器的 FTP 会话并退出 FTP 环境\n!：转义到 shell，也就是结束与服务器的 FTP 会话并退出\n1 2 3 4 5 6 7 8 9 ftp\u003e ? ! ! 转义到 shell ftp\u003e ? close close 终止 ftp 会话 ftp\u003e ? quit quit 终止 ftp 会话并退出 ftp\u003e ? bye bye 终止 ftp 会话并退出 ftp\u003e ::: tip 说明\n以上所有示例都是再 Windows 10 系统下的 CMD 命令行操作。\nLinux 同样操作方法，只是界面和盘符显示不同而已。\n:::\n",
+  "wordCount" : "871",
+  "inLanguage": "zh",
+  "datePublished": "2021-06-24T00:00:00Z",
+  "dateModified": "2021-06-24T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Lucky"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:43616/posts/it/ftp/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lucky's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:43616/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:43616/" accesskey="h" title="Lucky&#39;s blog (Alt + H)">
+                        
+                    <img src="http://localhost:43616/icon_huf7f37d223c0e3c28213c0e23e44d661f_15070_0x35_resize_box_3.png" alt="" aria-label="logo"
+                        height="35">Lucky&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:43616/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:43616/" title="主页">
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:43616/posts/" title="文章">
+                    <span>文章</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:43616/archives/" title="时间轴">
+                    <span>时间轴</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:43616/about/" title="关于">
+                    <span>关于</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:43616/">主页</a>&nbsp;»&nbsp;<a href="http://localhost:43616/posts/">文章</a></div>
+    <h1 class="post-title entry-hint-parent">
+      FTP笔记
+    </h1>
+    <div class="post-meta"><span title='2021-06-24 00:00:00 +0000 UTC'>2021-06-24 00:00:00</span>&nbsp;·&nbsp;5 分钟&nbsp;·&nbsp;Lucky
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#ftp-%e4%bb%8b%e7%bb%8d" aria-label="FTP 介绍">FTP 介绍</a></li>
+                    <li>
+                        <a href="#%e5%a6%82%e4%bd%95%e7%99%bb%e5%bd%95-ftp" aria-label="如何登录 FTP">如何登录 FTP</a></li>
+                    <li>
+                        <a href="#ftp-%e5%9f%ba%e6%9c%ac%e5%91%bd%e4%bb%a4" aria-label="FTP 基本命令">FTP 基本命令</a></li>
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4" aria-label="常用命令">常用命令</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%96%87%e4%bb%b6%e6%88%96%e7%9b%ae%e5%bd%95%e6%93%8d%e4%bd%9c%e5%91%bd%e4%bb%a4" aria-label="文件或目录操作命令">文件或目录操作命令</a></li>
+                    <li>
+                        <a href="#%e4%bc%a0%e8%be%93%e6%96%b9%e5%bc%8f%e8%ae%be%e7%bd%ae%e5%91%bd%e4%bb%a4" aria-label="传输方式设置命令">传输方式设置命令</a></li>
+                    <li>
+                        <a href="#%e4%b8%8a%e4%bc%a0%e5%91%bd%e4%bb%a4" aria-label="上传命令">上传命令</a></li>
+                    <li>
+                        <a href="#%e4%b8%8b%e8%bd%bd%e5%91%bd%e4%bb%a4" aria-label="下载命令">下载命令</a></li>
+                    <li>
+                        <a href="#%e5%85%b6%e4%bb%96%e5%91%bd%e4%bb%a4" aria-label="其他命令">其他命令</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><h2 id="ftp-介绍">FTP 介绍<a hidden class="anchor" aria-hidden="true" href="#ftp-介绍">#</a></h2>
+<p>FTP（File Transfer Protocol，文件传输协议） 是 TCP/IP 协议组中的协议之一。FTP 协议包括两个组成部分，其一为 FTP 服务器，其二为 FTP 客户端。其中 FTP 服务器用来存储文件，用户可以使用 FTP 客户端通过 FTP 协议访问位于 FTP 服务器上的资源。在开发网站的时候，通常利用 FTP 协议把网页或程序传到 Web 服务器上。此外，由于 FTP 传输效率非常高，在网络上传输大的文件时，一般也采用该协议。</p>
+<p>默认情况下 FTP 协议使用 TCP 端口中的 20 和 21 这两个端口，其中 20 用于传输数据，21 用于传输控制信息。但是，是否使用 20 作为传输数据的端口与 FTP 使用的传输模式有关，如果采用主动模式，那么数据传输端口就是 20；如果采用被动模式，则具体最终使用哪个端口要服务器端和客户端协商决定。</p>
+<h2 id="如何登录-ftp">如何登录 FTP<a hidden class="anchor" aria-hidden="true" href="#如何登录-ftp">#</a></h2>
+<ol>
+<li>在命令行下输入<code>ftp IP地址</code>，按照提示输入用户名和密码，完成登陆</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">C:<span class="se">\U</span>sers<span class="se">\l</span>iujialin&gt;ftp 192.168.3.1	<span class="c1">#直接 ftp IP地址</span>
+</span></span><span class="line"><span class="cl">连接到 192.168.3.1。
+</span></span><span class="line"><span class="cl"><span class="m">220</span> <span class="o">(</span>vsFTPd 3.0.3<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="m">200</span> Always in UTF8 mode.
+</span></span><span class="line"><span class="cl">用户<span class="o">(</span>192.168.3.1:<span class="o">(</span>none<span class="o">))</span>: root		<span class="c1">#输入用户名</span>
+</span></span><span class="line"><span class="cl"><span class="m">331</span> Please specify the password.
+</span></span><span class="line"><span class="cl">密码:								<span class="c1">#输入密码</span>
+</span></span><span class="line"><span class="cl"><span class="m">230</span> Login successful.				<span class="c1">#登录成功</span>
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>直接输入 <code>ftp</code>，进入 ftp 服务后输入 <code>open IP地址</code>，按照提示输入用户名和密码，完成登陆</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">C:<span class="se">\U</span>sers<span class="se">\l</span>iujialin&gt;ftp				<span class="c1">#输入ftp进入ftp模式</span>
+</span></span><span class="line"><span class="cl">ftp&gt; open 192.168.3.1				<span class="c1">#输入open IP地址</span>
+</span></span><span class="line"><span class="cl">连接到 192.168.3.1。        
+</span></span><span class="line"><span class="cl"><span class="m">220</span> <span class="o">(</span>vsFTPd 3.0.3<span class="o">)</span>  
+</span></span><span class="line"><span class="cl"><span class="m">200</span> Always in UTF8 mode.
+</span></span><span class="line"><span class="cl">用户<span class="o">(</span>192.168.3.1:<span class="o">(</span>none<span class="o">))</span>: root		<span class="c1">#输入用户名</span>
+</span></span><span class="line"><span class="cl"><span class="m">331</span> Please specify the password.
+</span></span><span class="line"><span class="cl">密码:								<span class="c1">#输入密码</span>
+</span></span><span class="line"><span class="cl"><span class="m">230</span> Login successful.				<span class="c1">#登录成功</span>
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ftp-基本命令">FTP 基本命令<a hidden class="anchor" aria-hidden="true" href="#ftp-基本命令">#</a></h2>
+<p>其实只要说一个命令，常用的基本命令就可以知道了。这个命令就是十万个为什么&mdash; <code>?</code>（没错，该命令就是一个问号，等同 <code>hlep</code> 命令）
+直接输入一个 <code>?</code>，就会显示出这些命令；输入 <code>? 命令</code>，就会显示该命令的帮助信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; ?
+</span></span><span class="line"><span class="cl">命令可能是缩写的。  命令为:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">!               delete          literal         prompt          send
+</span></span><span class="line"><span class="cl">?               debug           ls              put             status
+</span></span><span class="line"><span class="cl">append          dir             mdelete         <span class="nb">pwd</span>             trace
+</span></span><span class="line"><span class="cl">ascii           disconnect      mdir            quit            <span class="nb">type</span>
+</span></span><span class="line"><span class="cl">bell            get             mget            quote           user
+</span></span><span class="line"><span class="cl">binary          glob            mkdir           recv            verbose
+</span></span><span class="line"><span class="cl">bye             <span class="nb">hash</span>            mls             remotehelp
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span>              <span class="nb">help</span>            mput            rename
+</span></span><span class="line"><span class="cl">close           lcd             open            rmdir
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>比如这里随便查看几个命令的帮助信息，如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; ? ?
+</span></span><span class="line"><span class="cl">?               打印本地帮助信息
+</span></span><span class="line"><span class="cl">ftp&gt; ? dir
+</span></span><span class="line"><span class="cl">dir             列出远程目录的内容
+</span></span><span class="line"><span class="cl">ftp&gt; ? ls
+</span></span><span class="line"><span class="cl">ls              列出远程目录的内容
+</span></span><span class="line"><span class="cl">ftp&gt; ? open
+</span></span><span class="line"><span class="cl">open            连接到远程 FTP
+</span></span><span class="line"><span class="cl">ftp&gt; ? lcd
+</span></span><span class="line"><span class="cl">lcd             更改本地工作目录
+</span></span><span class="line"><span class="cl">ftp&gt; <span class="nb">help</span> bye
+</span></span><span class="line"><span class="cl">bye             终止 ftp 会话并退出
+</span></span><span class="line"><span class="cl">ftp&gt; <span class="nb">help</span> <span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl"><span class="nb">pwd</span>             在远程计算机上打印工作目录
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="常用命令">常用命令<a hidden class="anchor" aria-hidden="true" href="#常用命令">#</a></h2>
+<h3 id="文件或目录操作命令">文件或目录操作命令<a hidden class="anchor" aria-hidden="true" href="#文件或目录操作命令">#</a></h3>
+<p>一般情况下用户都会被限制目录的访问权限，只可在当前目录下进行操作</p>
+<p><code>dir</code>：显示服务器目录和文件列表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; <span class="nb">cd</span> /home
+</span></span><span class="line"><span class="cl"><span class="m">250</span> Directory successfully changed.
+</span></span><span class="line"><span class="cl">ftp&gt; dir
+</span></span><span class="line"><span class="cl"><span class="m">200</span> PORT <span class="nb">command</span> successful. Consider using PASV.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Here comes the directory listing.
+</span></span><span class="line"><span class="cl">-rw-r--r--    <span class="m">1</span> <span class="m">0</span>        <span class="m">0</span>         <span class="m">1019904</span> May <span class="m">12</span> 12:39 Installing_OMV5_on_Armbian.pdf
+</span></span><span class="line"><span class="cl">-rw-r--r--    <span class="m">1</span> <span class="m">0</span>        <span class="m">0</span>          <span class="m">106026</span> Aug <span class="m">03</span>  <span class="m">2019</span> breed.bin
+</span></span><span class="line"><span class="cl">drwxr-xr-x    <span class="m">2</span> <span class="m">55</span>       <span class="m">55</span>              <span class="m">0</span> Apr <span class="m">30</span> 03:31 ftp
+</span></span><span class="line"><span class="cl">-rw-r--r--    <span class="m">1</span> <span class="m">0</span>        <span class="m">0</span>         <span class="m">2159147</span> Sep <span class="m">09</span>  <span class="m">2019</span> 昆仑.epub
+</span></span><span class="line"><span class="cl">-rw-r--r--    <span class="m">1</span> <span class="m">0</span>        <span class="m">0</span>          <span class="m">441798</span> Feb <span class="m">12</span>  <span class="m">2019</span> 流浪地球.epub
+</span></span><span class="line"><span class="cl"><span class="m">226</span> Directory send OK.
+</span></span><span class="line"><span class="cl">ftp: 收到 <span class="m">363</span> 字节，用时 0.01秒 24.20千字节/秒。
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>mkdir</code>：在服务器上创建目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; mkdir <span class="nb">test</span>
+</span></span><span class="line"><span class="cl"><span class="m">257</span> <span class="s2">&#34;/home/test&#34;</span> created
+</span></span><span class="line"><span class="cl">ftp&gt; ls
+</span></span><span class="line"><span class="cl"><span class="m">200</span> PORT <span class="nb">command</span> successful. Consider using PASV.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Here comes the directory listing.
+</span></span><span class="line"><span class="cl">ftp
+</span></span><span class="line"><span class="cl">ss.txt
+</span></span><span class="line"><span class="cl">system.png
+</span></span><span class="line"><span class="cl"><span class="nb">test</span>                    <span class="c1">#新创建的文件夹</span>
+</span></span><span class="line"><span class="cl"><span class="m">226</span> Directory send OK.
+</span></span><span class="line"><span class="cl">ftp: 收到 <span class="m">34</span> 字节，用时 0.01秒 6.80千字节/秒。
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>rmdir</code>：在服务器上删除目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; rmdir <span class="nb">test</span>
+</span></span><span class="line"><span class="cl"><span class="m">250</span> Remove directory operation successful.
+</span></span><span class="line"><span class="cl">ftp&gt; ls
+</span></span><span class="line"><span class="cl"><span class="m">200</span> PORT <span class="nb">command</span> successful. Consider using PASV.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Here comes the directory listing.
+</span></span><span class="line"><span class="cl">ftp
+</span></span><span class="line"><span class="cl">ss.txt
+</span></span><span class="line"><span class="cl">system.png
+</span></span><span class="line"><span class="cl"><span class="m">226</span> Directory send OK.
+</span></span><span class="line"><span class="cl">ftp: 收到 <span class="m">28</span> 字节，用时 0.01秒 5.60千字节/秒。
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>ls</code>：显示服务器简易的文件列表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; ls
+</span></span><span class="line"><span class="cl"><span class="m">200</span> PORT <span class="nb">command</span> successful. Consider using PASV.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Here comes the directory listing.
+</span></span><span class="line"><span class="cl">Installing_OMV5_on_Armbian.pdf
+</span></span><span class="line"><span class="cl">breed.bin
+</span></span><span class="line"><span class="cl">ftp
+</span></span><span class="line"><span class="cl">昆仑.epub
+</span></span><span class="line"><span class="cl">流浪地球.epub
+</span></span><span class="line"><span class="cl"><span class="m">226</span> Directory send OK.
+</span></span><span class="line"><span class="cl">ftp: 收到 <span class="m">83</span> 字节，用时 0.01秒 10.38千字节/秒。
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>cd</code>：进入服务器指定的目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; <span class="nb">cd</span> /tmp
+</span></span><span class="line"><span class="cl"><span class="m">250</span> Directory successfully changed.
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>pwd</code>：查看服务器上的当前工作目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; <span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl"><span class="m">257</span> <span class="s2">&#34;/tmp&#34;</span> is the current directory
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>rename filename [newfilename]</code>：重命名 FTP 服务器上的文件</p>
+<p><code>delete filename</code>：删除 FTP 服务器上的文件</p>
+<h3 id="传输方式设置命令">传输方式设置命令<a hidden class="anchor" aria-hidden="true" href="#传输方式设置命令">#</a></h3>
+<p>上传和下载文件时应该使用正确的传输类型，FTP 的传输类型分为 ASCII码方式和二进制方式两种，对 .txt、.htm 等文件应采用 ASCII码方式传输，对 .exe或图片、视频、音频等文件应采用二进制方式传输。在默认情况下，FTP 为 ASCII码传输方式。（以下 3 个命令都不带参数）</p>
+<p><code>type</code>：查看当前的传输方式</p>
+<p><code>ascii</code>：设定传输方式为 ASCII码方式</p>
+<p><code>binary</code>：设定传输方式为二进制方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; <span class="nb">type</span>
+</span></span><span class="line"><span class="cl">使用 ascii 模式传送文件。
+</span></span><span class="line"><span class="cl">ftp&gt; binary
+</span></span><span class="line"><span class="cl"><span class="m">200</span> Switching to Binary mode.
+</span></span><span class="line"><span class="cl">ftp&gt; <span class="nb">type</span>
+</span></span><span class="line"><span class="cl">使用 binary 模式传送文件。
+</span></span><span class="line"><span class="cl">ftp&gt; ascii
+</span></span><span class="line"><span class="cl"><span class="m">200</span> Switching to ASCII mode.
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="上传命令">上传命令<a hidden class="anchor" aria-hidden="true" href="#上传命令">#</a></h3>
+<p><code>put filename [newname]</code></p>
+<p><code>send filename [newname]</code></p>
+<p>filename 为上传的本地文件名，newname 为上传至 FTP 服务器上时使用的名字，如果不指定 newname，文件将以原名上传。</p>
+<p>上传文件前，应该根据文件的类型设置传输方式（见文章最后），本机的工作目录也应该设置为上传文件所在的目录。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; put C:<span class="se">\U</span>sers<span class="se">\l</span>iujialin<span class="se">\D</span>ownloads<span class="se">\s</span>ystem.png
+</span></span><span class="line"><span class="cl"><span class="m">200</span> PORT <span class="nb">command</span> successful. Consider using PASV.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Ok to send data.
+</span></span><span class="line"><span class="cl"><span class="m">226</span> Transfer complete.
+</span></span><span class="line"><span class="cl">ftp: 发送 <span class="m">64878</span> 字节，用时 0.01秒 9268.29千字节/秒。
+</span></span><span class="line"><span class="cl">ftp&gt; send C:<span class="se">\U</span>sers<span class="se">\l</span>iujialin<span class="se">\D</span>ownloads<span class="se">\s</span>s.txt
+</span></span><span class="line"><span class="cl"><span class="m">200</span> PORT <span class="nb">command</span> successful. Consider using PASV.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Ok to send data.
+</span></span><span class="line"><span class="cl"><span class="m">226</span> Transfer complete.
+</span></span><span class="line"><span class="cl">ftp: 发送 <span class="m">382</span> 字节，用时 0.00秒 382000.00千字节/秒。
+</span></span><span class="line"><span class="cl">ftp&gt; ls
+</span></span><span class="line"><span class="cl"><span class="m">200</span> PORT <span class="nb">command</span> successful. Consider using PASV.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Here comes the directory listing.
+</span></span><span class="line"><span class="cl">ftp
+</span></span><span class="line"><span class="cl">ss.txt
+</span></span><span class="line"><span class="cl">system.png
+</span></span><span class="line"><span class="cl"><span class="m">226</span> Directory send OK.
+</span></span><span class="line"><span class="cl">ftp: 收到 <span class="m">28</span> 字节，用时 0.01秒 4.67千字节/秒。
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="下载命令">下载命令<a hidden class="anchor" aria-hidden="true" href="#下载命令">#</a></h3>
+<p><code>get filename [newname]</code></p>
+<p>filename 为 FTP 服务器上的文件名，newname 为保存在本都计算机上时使用的名字，如果不指定 newname，文件将以原名保存。</p>
+<p><code>get</code> 命令下载的文件将保存在本地计算机的工作目录下。该目录是启动 FTP 时在盘符 C: 后显示的目录。如果想修改本地计算机的工作目录，可以使用 <code>lcd</code> 命令。比如：<code>lcd d:\</code> 表示将工作目录设定为 D 盘的根目录。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; lcd D:<span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>目前的本地目录 D:<span class="se">\。</span>
+</span></span><span class="line"><span class="cl">ftp&gt; <span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl"><span class="m">257</span> <span class="s2">&#34;/home&#34;</span> is the current directory
+</span></span><span class="line"><span class="cl">ftp&gt; get ss.txt ssss.txt
+</span></span><span class="line"><span class="cl"><span class="m">200</span> PORT <span class="nb">command</span> successful. Consider using PASV.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Opening ASCII mode data connection <span class="k">for</span> ss.txt <span class="o">(</span><span class="m">382</span> bytes<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="m">226</span> Transfer complete.
+</span></span><span class="line"><span class="cl">ftp: 收到 <span class="m">417</span> 字节，用时 0.00秒 417000.00千字节/秒。
+</span></span><span class="line"><span class="cl">ftp&gt; get system.png
+</span></span><span class="line"><span class="cl"><span class="m">200</span> PORT <span class="nb">command</span> successful. Consider using PASV.
+</span></span><span class="line"><span class="cl"><span class="m">150</span> Opening ASCII mode data connection <span class="k">for</span> system.png <span class="o">(</span><span class="m">64877</span> bytes<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="m">226</span> Transfer complete.
+</span></span><span class="line"><span class="cl">ftp: 收到 <span class="m">65193</span> 字节，用时 0.00秒 65193.00千字节/秒。
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="其他命令">其他命令<a hidden class="anchor" aria-hidden="true" href="#其他命令">#</a></h3>
+<p><code>mput filename1 filename2 ...</code>：上传多个文件</p>
+<p><code>mget filename1 filename2 ...</code>：下载多个文件</p>
+<p><code>close</code>：结束与服务器的 FTP 会话</p>
+<p><code>quit</code>：结束与服务器的 FTP 会话并退出 FTP 环境</p>
+<p><code>!</code>：转义到 shell，也就是结束与服务器的 FTP 会话并退出</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ftp&gt; ? !
+</span></span><span class="line"><span class="cl">!               转义到 shell
+</span></span><span class="line"><span class="cl">ftp&gt; ? close
+</span></span><span class="line"><span class="cl">close           终止 ftp 会话
+</span></span><span class="line"><span class="cl">ftp&gt; ? quit
+</span></span><span class="line"><span class="cl">quit            终止 ftp 会话并退出
+</span></span><span class="line"><span class="cl">ftp&gt; ? bye
+</span></span><span class="line"><span class="cl">bye             终止 ftp 会话并退出
+</span></span><span class="line"><span class="cl">ftp&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>::: tip 说明</p>
+<p>以上所有示例都是再 Windows 10 系统下的 CMD 命令行操作。</p>
+<p>Linux 同样操作方法，只是界面和盘符显示不同而已。</p>
+<p>:::</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:43616/tags/it%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">IT基础知识</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="http://localhost:43616/posts/it/git/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>Git笔记</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>© 2024 <a href="https://blog.sfcs.eu.org">Lucky&rsquo;s blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

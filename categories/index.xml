@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>分类 on Lucky&#39;s blog</title>
+    <link>http://localhost:43616/categories/</link>
+    <description>Recent content in 分类 on Lucky&#39;s blog</description>
+    <generator>Hugo -- 0.129.0</generator>
+    <language>zh</language>
+    <copyright>2024 Lucky&amp;rsquo;s blog</copyright>
+    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:43616/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IT基础</title>
+      <link>http://localhost:43616/categories/it%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:43616/categories/it%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

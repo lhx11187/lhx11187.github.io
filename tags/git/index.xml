@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Git on Lucky&#39;s blog</title>
+    <link>http://localhost:43616/tags/git/</link>
+    <description>Recent content in Git on Lucky&#39;s blog</description>
+    <generator>Hugo -- 0.129.0</generator>
+    <language>zh</language>
+    <copyright>2024 Lucky&amp;rsquo;s blog</copyright>
+    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:43616/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git笔记</title>
+      <link>http://localhost:43616/posts/it/git/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:43616/posts/it/git/</guid>
+      <description>Git 笔记 Git 是什么 Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
+Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
+Git 与常用的版本控制工具 CVS，Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。
+Git 不仅仅是个版本控制系统，它也是个内容管理系统（CMS），工作管理系统等。
+Git 安装配置 在使用 Git 前我们需要先安装 Git。Git 目前支持 Linux/Unix、Solaris、Mac 和 Windows 平台上运行。
+Git 各平台安装包下载地址为：http://git-scm.com/downloads
+::: tip 说明
+本笔记主要以 Linux 平台为主
+Git 的工作需要调用 curl，zlib，openssl，expat，libiconv 等库的代码，所以需要先安装这些依赖工具。
+:::
+各 Linux 系统可以使用其安装包管理工具（apt-get、yum 等）进行安装：
+Debian/Ubuntu 如果你使用的系统是 Debian/Ubuntu， Git 安装命令为：
+1 2 3 4 $ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev $ apt-get install git $ git --version git version 1.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>IT基础知识 on Lucky&#39;s blog</title>
+    <link>http://localhost:43616/tags/it%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+    <description>Recent content in IT基础知识 on Lucky&#39;s blog</description>
+    <generator>Hugo -- 0.129.0</generator>
+    <language>zh</language>
+    <copyright>2024 Lucky&amp;rsquo;s blog</copyright>
+    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:43616/tags/it%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FTP笔记</title>
+      <link>http://localhost:43616/posts/it/ftp/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:43616/posts/it/ftp/</guid>
+      <description>FTP 介绍 FTP（File Transfer Protocol，文件传输协议） 是 TCP/IP 协议组中的协议之一。FTP 协议包括两个组成部分，其一为 FTP 服务器，其二为 FTP 客户端。其中 FTP 服务器用来存储文件，用户可以使用 FTP 客户端通过 FTP 协议访问位于 FTP 服务器上的资源。在开发网站的时候，通常利用 FTP 协议把网页或程序传到 Web 服务器上。此外，由于 FTP 传输效率非常高，在网络上传输大的文件时，一般也采用该协议。
+默认情况下 FTP 协议使用 TCP 端口中的 20 和 21 这两个端口，其中 20 用于传输数据，21 用于传输控制信息。但是，是否使用 20 作为传输数据的端口与 FTP 使用的传输模式有关，如果采用主动模式，那么数据传输端口就是 20；如果采用被动模式，则具体最终使用哪个端口要服务器端和客户端协商决定。
+如何登录 FTP 在命令行下输入ftp IP地址，按照提示输入用户名和密码，完成登陆 1 2 3 4 5 6 7 8 9 C:\Users\liujialin&amp;gt;ftp 192.168.3.1	#直接 ftp IP地址 连接到 192.168.3.1。 220 (vsFTPd 3.0.3) 200 Always in UTF8 mode.</description>
+    </item>
+    <item>
+      <title>IT 基础</title>
+      <link>http://localhost:43616/posts/it/readme/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:43616/posts/it/readme/</guid>
+      <description>IT 基础知识 就是平时遇到的最基本的知识，网罗到此处。包括各个方面：
+Linux
+Windows
+各种系统
+网络
+各种协议
+等等&amp;hellip;&amp;hellip;
+都是之前学习或临时用到的时候，记的一些学习笔记。长时间没怎么用，再想用就已经忘的差不多了。所以，整理起来，以便日后方便查阅。</description>
+    </item>
+    <item>
+      <title>SFTP笔记</title>
+      <link>http://localhost:43616/posts/it/sftp/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:43616/posts/it/sftp/</guid>
+      <description>SFTP 介绍 SFTP 是 SSH File Transfer Protocol 的缩写，安全文件传送协议。SFTP 与 FTP 有着几乎一样的语法和功能。SFTP 为 SSH 的其中一部分，是一种传输档案至 Blogger 伺服器的安全方式。
+其实在 SSH 软件包中，已经包含了一个叫作 SFTP 的安全文件信息传输子系统，SFTP 本身没有单独的守护进程，它必须使用 sshd 守护进程（端口号默认是 22）来完成相应的连接和答复操作，所以从某种意义上来说，SFTP 并不像一个服务器程序，而更像是一个客户端程序。
+如何登录 SFTP sftp 服务器IP
+sftp 服务器IP 回车之后，会提示输入默认用户密码进行验证，验证成功后即登录成功。
+1 2 3 4 kei@kei-KVM:~/Desktop$ sftp 9.200.76.179 ryuu@9.200.76.179&amp;#39;s password: Connected to 9.200.76.179. sftp&amp;gt; sftp user@服务器IP
+sftp user@服务器IP 之后，会提示输入指定用户 user 的密码进行验证，验证成功后即登录成功。
+1 2 3 4 kei@kei-KVM:~/Desktop$ sftp karin@9.200.76.179 karin@9.200.76.179&amp;#39;s password: Connected to 9.200.76.179. sftp&amp;gt; SFTP 的基本命令 同 FTP 一样，命令 ?</description>
+    </item>
+  </channel>
+</rss>
