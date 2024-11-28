@@ -2,33 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>系列 on Lucky&#39;s blog</title>
-    <link>http://localhost:28536/series/</link>
+    <link>https://lhx11187.github.io/series/</link>
     <description>Recent content in 系列 on Lucky&#39;s blog</description>
     <generator>Hugo -- 0.129.0</generator>
     <language>zh</language>
     <copyright>2024 Lucky&amp;rsquo;s blog</copyright>
-    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:28536/series/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>FTP</title>
-      <link>http://localhost:28536/series/ftp/</link>
-      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:28536/series/ftp/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Git</title>
-      <link>http://localhost:28536/series/git/</link>
-      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:28536/series/git/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>IT基础</title>
-      <link>http://localhost:28536/series/it%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:28536/series/it%E5%9F%BA%E7%A1%80/</guid>
-      <description></description>
-    </item>
+    <atom:link href="https://lhx11187.github.io/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

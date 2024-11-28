@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Git on Lucky&#39;s blog</title>
-    <link>http://localhost:28536/series/git/</link>
+    <link>http://localhost:30846/series/git/</link>
     <description>Recent content in Git on Lucky&#39;s blog</description>
     <generator>Hugo -- 0.129.0</generator>
     <language>zh</language>
     <copyright>2024 Lucky&amp;rsquo;s blog</copyright>
     <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:28536/series/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:30846/series/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git笔记</title>
-      <link>http://localhost:28536/posts/it/git/</link>
+      <link>http://localhost:30846/posts/it/git/</link>
       <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:28536/posts/it/git/</guid>
+      <guid>http://localhost:30846/posts/it/git/</guid>
       <description>Git 笔记 Git 是什么 Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
 Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。
 Git 与常用的版本控制工具 CVS，Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。

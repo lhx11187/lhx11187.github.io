@@ -2,58 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:28536/posts/first/</loc>
+    <loc>https://lhx11187.github.io/</loc>
     <lastmod>2024-11-28T10:04:26+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:28536/</loc>
+    <loc>https://lhx11187.github.io/posts/</loc>
     <lastmod>2024-11-28T10:04:26+08:00</lastmod>
   </url><url>
-    <loc>http://localhost:28536/posts/</loc>
-    <lastmod>2024-11-28T10:04:26+08:00</lastmod>
+    <loc>https://lhx11187.github.io/tags/</loc>
   </url><url>
-    <loc>http://localhost:28536/series/ftp/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <loc>https://lhx11187.github.io/categories/</loc>
   </url><url>
-    <loc>http://localhost:28536/posts/it/ftp/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <loc>https://lhx11187.github.io/about/</loc>
   </url><url>
-    <loc>http://localhost:28536/tags/git/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <loc>https://lhx11187.github.io/archives/</loc>
   </url><url>
-    <loc>http://localhost:28536/series/git/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
+    <loc>https://lhx11187.github.io/search/</loc>
   </url><url>
-    <loc>http://localhost:28536/posts/it/git/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:28536/posts/it/readme/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:28536/series/it%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:28536/categories/it%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:28536/tags/it%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:28536/posts/it/sftp/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:28536/tags/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:28536/categories/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:28536/series/</loc>
-    <lastmod>2021-06-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:28536/about/</loc>
-  </url><url>
-    <loc>http://localhost:28536/archives/</loc>
-  </url><url>
-    <loc>http://localhost:28536/search/</loc>
+    <loc>https://lhx11187.github.io/series/</loc>
   </url>
 </urlset>
