@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>IT基础 on Lucky&#39;s blog</title>
+    <link>http://localhost:28536/series/it%E5%9F%BA%E7%A1%80/</link>
+    <description>Recent content in IT基础 on Lucky&#39;s blog</description>
+    <generator>Hugo -- 0.129.0</generator>
+    <language>zh</language>
+    <copyright>2024 Lucky&amp;rsquo;s blog</copyright>
+    <lastBuildDate>Thu, 24 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:28536/series/it%E5%9F%BA%E7%A1%80/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IT 基础</title>
+      <link>http://localhost:28536/posts/it/readme/</link>
+      <pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:28536/posts/it/readme/</guid>
+      <description>IT 基础知识 就是平时遇到的最基本的知识，网罗到此处。包括各个方面：
+Linux
+Windows
+各种系统
+网络
+各种协议
+等等&amp;hellip;&amp;hellip;
+都是之前学习或临时用到的时候，记的一些学习笔记。长时间没怎么用，再想用就已经忘的差不多了。所以，整理起来，以便日后方便查阅。</description>
+    </item>
+  </channel>
+</rss>
